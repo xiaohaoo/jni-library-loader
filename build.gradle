@@ -1,9 +1,21 @@
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'com.xiaohaoo:maven-publishing-gradle-plugin:1.0'
+    }
+}
+
 plugins {
     id 'java'
 }
 
-group 'com.xiaohaoo.jni_loader'
-version '1.0-SNAPSHOT'
+
+apply plugin: 'com.xiaohaoo.maven-publishing'
+
+group 'com.xiaohaoo'
+version '1.0'
 
 repositories {
     mavenCentral()
@@ -16,4 +28,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+//发布配置
+xiaohaoMavenPublishing {
+    url = "https://github.com/xiaohaoo/jni-library-loader"
+    description = "JNI加载动态类库"
 }
